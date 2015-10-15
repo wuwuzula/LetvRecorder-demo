@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.letv.recorder"
+        minSdkVersion 8
+        targetSdkVersion 18
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile project(':leCloudSDK_Release')
+    compile 'com.google.code.gson:gson:2.1'
+    compile 'com.android.support:appcompat-v7:19.1.0'
+    compile files('libs/LetvRecorder_2015_08_13_17_v0.1.jar')
+    compile files('libs/volley.jar')
+    compile 'com.github.orhanobut:logger:1.12'
+}

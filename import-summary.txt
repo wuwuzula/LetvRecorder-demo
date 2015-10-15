@@ -1,0 +1,118 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From LeCloudSDK_Release:
+* ic_launcher-web.png
+* proguard.pro
+From LetvRecorder:
+* .DS_Store
+* ic_launcher-web.png
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.1.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:19.1.0
+gson-2.1.jar => com.google.code.gson:gson:2.1
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.1.jar => version 2.1 in com.google.code.gson:gson:2.1
+gson-2.1.jar => version 2.1 in com.google.code.gson:gson:2.1
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:19.1.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In LeCloudSDK_Release:
+* AndroidManifest.xml => leCloudSDK_Release/src/main/AndroidManifest.xml
+* assets/ => leCloudSDK_Release/src/main/assets
+* libs/LeCloudSDK_V3.1.jar => leCloudSDK_Release/libs/LeCloudSDK_V3.1.jar
+* libs/armeabi-v7a/libffmpeg.so => leCloudSDK_Release/src/main/jniLibs/armeabi-v7a/libffmpeg.so
+* libs/armeabi-v7a/libggmedia.so => leCloudSDK_Release/src/main/jniLibs/armeabi-v7a/libggmedia.so
+* libs/armeabi-v7a/libmvvtracker.so => leCloudSDK_Release/src/main/jniLibs/armeabi-v7a/libmvvtracker.so
+* libs/armeabi-v7a/libplayer.so => leCloudSDK_Release/src/main/jniLibs/armeabi-v7a/libplayer.so
+* libs/armeabi-v7a/libsdl.so => leCloudSDK_Release/src/main/jniLibs/armeabi-v7a/libsdl.so
+* libs/armeabi/libffmpeg.so => leCloudSDK_Release/src/main/jniLibs/armeabi/libffmpeg.so
+* libs/armeabi/libggmedia.so => leCloudSDK_Release/src/main/jniLibs/armeabi/libggmedia.so
+* libs/armeabi/libmvvtracker.so => leCloudSDK_Release/src/main/jniLibs/armeabi/libmvvtracker.so
+* libs/armeabi/libplayer.so => leCloudSDK_Release/src/main/jniLibs/armeabi/libplayer.so
+* libs/armeabi/libsdl.so => leCloudSDK_Release/src/main/jniLibs/armeabi/libsdl.so
+* libs/cde-sdk-0.9.82-02.jar => leCloudSDK_Release/libs/cde-sdk-0.9.82-02.jar
+* libs/iplayer.jar => leCloudSDK_Release/libs/iplayer.jar
+* libs/javabase64-1.3.1.jar => leCloudSDK_Release/libs/javabase64-1.3.1.jar
+* res/ => leCloudSDK_Release/src/main/res/
+* src/ => leCloudSDK_Release/src/main/java
+In LetvRecorder:
+* AndroidManifest.xml => letvRecorder/src/main/AndroidManifest.xml
+* assets/ => letvRecorder/src/main/assets
+* libs/LetvRecorder_2015_08_13_17_v0.1.jar => letvRecorder/libs/LetvRecorder_2015_08_13_17_v0.1.jar
+* libs/armeabi-v7a/libfdk-aac.so => letvRecorder/src/main/jniLibs/armeabi-v7a/libfdk-aac.so
+* libs/armeabi-v7a/libffmpeg_neon.so => letvRecorder/src/main/jniLibs/armeabi-v7a/libffmpeg_neon.so
+* libs/armeabi-v7a/libfilters.so => letvRecorder/src/main/jniLibs/armeabi-v7a/libfilters.so
+* libs/armeabi-v7a/librecorder.so => letvRecorder/src/main/jniLibs/armeabi-v7a/librecorder.so
+* libs/armeabi-v7a/libtransmitter.so => letvRecorder/src/main/jniLibs/armeabi-v7a/libtransmitter.so
+* libs/volley.jar => letvRecorder/libs/volley.jar
+* lint.xml => letvRecorder/lint.xml
+* res/ => letvRecorder/src/main/res/
+* src/ => letvRecorder/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

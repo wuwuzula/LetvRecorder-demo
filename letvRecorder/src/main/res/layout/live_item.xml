@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="116dp" >
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/item_img"
+        android:layout_width="@dimen/item_img_width"
+        android:layout_height="82dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="@dimen/item_title_marginleft"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/default_img_16_10"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/item_live_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/item_img"
+        android:layout_marginLeft="@dimen/item_title_marginleft"
+        android:layout_marginRight="@dimen/item_title_marginright"
+        android:layout_toRightOf="@id/item_img"
+        android:maxLines="2"
+        android:text="男足世界杯乌拉圭对巴西队"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
+
+   
+
+    <TextView
+        android:id="@+id/item_live_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/item_img"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="@dimen/item_title_marginleft"
+        android:layout_toRightOf="@id/item_img"
+        android:singleLine="true"
+        android:text="Test"
+        android:drawableLeft="@drawable/item_play_gray"
+        android:drawablePadding="5dp"
+        android:textColor="#ffffff"
+        android:textSize="13dp" />
+    
+    
+     <TextView
+        android:id="@+id/item_live_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/item_img"
+        android:layout_marginBottom="17dp"
+        android:singleLine="true"
+        android:drawableLeft="@drawable/letv_recorder_people"
+        android:layout_toRightOf="@id/item_live_angle"
+        android:layout_marginLeft="20dp"
+        android:drawablePadding="5dp"
+        android:text="1600"
+        android:textColor="#ffffff"
+        android:textSize="13dp" 
+        android:gravity="center_vertical"/>
+
+</RelativeLayout>

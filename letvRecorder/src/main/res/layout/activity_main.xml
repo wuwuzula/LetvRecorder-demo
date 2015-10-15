@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/live_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/live_title" />
+
+    <RelativeLayout
+        android:id="@+id/live_content_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/live_title"
+        android:layout_marginTop="5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/live_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/search" />
+
+        <TextView
+            android:id="@+id/live_content_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/live_search"
+            android:background="@drawable/play_button"
+            android:gravity="center"
+            android:text="播放"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:id="@+id/live_id_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@id/live_content_play"
+            android:background="@drawable/input_bg"
+            android:hint="直播ID"
+            android:padding="3dp"
+            android:textColor="#ffffff"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/live_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/live_content_rl"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/live_item_title" />
+
+    <ImageView
+        android:id="@+id/live_recorder"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/letv_recorder" />
+
+    <ListView
+        android:id="@+id/live_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/live_recorder"
+        android:layout_below="@id/live_list_title"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false" />
+
+</RelativeLayout>

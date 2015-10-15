@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+      <!-- offline page -->
+    <dimen name="item_height">116dp</dimen>
+    <dimen name="item_img_width">132dp</dimen>
+    <dimen name="item_img_height">82dp</dimen>
+    <dimen name="item_title_marginright">18dp</dimen>
+    <dimen name="item_title_marginleft">10dp</dimen>
+    <dimen name="item_check_margintop">40dp</dimen>
+    <dimen name="item_capacity_height">28dp</dimen>
+    
+    
+    
+    <dimen name="letv_recorder_top_title_size">16sp</dimen>
+    <dimen name="letv_recorder_left_arraw_margin">10dp</dimen>
+    <dimen name="letv_recorder_change_cam_margin">20dp</dimen>
+    <dimen name="letv_recorder_bottom_text_size">16sp</dimen>
+    <dimen name="letv_recorder_machine_item_width">90dp</dimen>
+    <dimen name="letv_recorder_machine_item_gap">10dp</dimen>
+    
+
+</resources>

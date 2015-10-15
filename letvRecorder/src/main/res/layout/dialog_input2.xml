@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/et_userid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_secretkey"
+        android:hint="userID"
+        android:lines="1" />
+
+    <TextView
+        android:id="@+id/tv_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_userid"
+        android:layout_alignBottom="@+id/et_userid"
+        android:layout_alignParentLeft="true"
+        android:text="UserId" />
+
+    <TextView
+        android:id="@+id/tv_activityid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_activityid"
+        android:layout_alignBottom="@+id/et_activityid"
+        android:layout_alignParentLeft="true"
+        android:text="ActivityId" />
+
+    <EditText
+        android:id="@+id/et_activityid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_userid"
+        android:layout_toRightOf="@+id/tv_secretkey"
+        android:ems="10"
+        android:hint="activityid" />
+
+    <EditText
+        android:id="@+id/et_secretkeyid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_activityid"
+        android:layout_below="@+id/et_activityid"
+        android:ems="10"
+        android:hint="secretKey"
+        android:inputType="textPassword"
+        android:lines="1" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_secretkey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_secretkeyid"
+        android:layout_alignBottom="@+id/et_secretkeyid"
+        android:layout_alignParentLeft="true"
+        android:text="SecretKey" />
+
+</RelativeLayout>
