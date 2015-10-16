@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+/**
+ * 录制视频
+ */
 public class RecorderDemoActivity extends Activity {
 
 	protected static final String TAG = "RecorderActivity";

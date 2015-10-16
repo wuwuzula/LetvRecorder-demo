@@ -24,7 +24,7 @@
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="5"
+                android:layout_weight="6.5"
                 android:gravity="left" >
 
                 <!-- 播放和暂停 -->
@@ -114,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:visibility="gone"
                     android:src="@drawable/logo_2" />
             </RelativeLayout>
 

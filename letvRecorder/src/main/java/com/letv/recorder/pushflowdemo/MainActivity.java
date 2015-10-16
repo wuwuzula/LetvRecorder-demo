@@ -107,9 +107,10 @@ public class MainActivity extends Activity implements OnClickListener {
 					@Override
 					public void run() {
 						List<SearchActivityInfo> searchActivityInfos = (List<SearchActivityInfo>) object;
-						for (int i=0;i<searchActivityInfos.size();i++){
-							Logger.d(i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
-						}
+						Logger.d("请求成功 searchActivityByUserIDRequest");
+//						for (int i=0;i<searchActivityInfos.size();i++){
+//							Logger.d(i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
+//						}
 						liveAdapter.setFlowInfos((List<SearchActivityInfo>) object);
 						liveListView.setAdapter(liveAdapter);
 						liveListView.setOnItemClickListener(liveAdapter);
@@ -188,6 +189,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+			//TODO:录制视频
 			case R.id.live_recorder:
 
 				AlertDialog.Builder builder = new Builder(MainActivity.this);
@@ -224,6 +226,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				alertDialog.show();
 
 				break;
+
+
+			//TODO：播放视频
 			case R.id.live_content_play:
 				if (TextUtils.isEmpty(editText.getText())) {
 					Toast.makeText(this, "输入内容不能为空", Toast.LENGTH_SHORT).show();
