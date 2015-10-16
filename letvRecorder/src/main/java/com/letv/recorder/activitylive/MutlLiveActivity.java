@@ -3,9 +3,11 @@ package com.letv.recorder.activitylive;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -42,6 +44,8 @@ public class MutlLiveActivity extends Activity {
     private boolean isBackgroud = false;
 
     RelativeLayout mVideoWindow;
+
+    ProgressBar mProgressbar;
 
 
     @Override
@@ -87,6 +91,9 @@ public class MutlLiveActivity extends Activity {
         AppInfo.initApp();
         AppInfo.initScreenInfo(this);
         Logger.d("MutlLiveActivity onCreate");
+
+
+        mProgressbar = (ProgressBar) findViewById(R.id.pb_loading);
         Intent intent = getIntent();
         Defualt_ActivityID = intent.getStringExtra("activityID");
         isHLS = intent.getBooleanExtra("isHLS", false);
@@ -94,18 +101,14 @@ public class MutlLiveActivity extends Activity {
         this.mPlayerLayoutView = (RelativeLayout) this.findViewById(R.id.layout_player);
 
         /**
+         *
+         * 参数说明：
          * context:Context
-         hasSkin:
-         true:使用SDK播放器皮肤
-         false:不使用SDK播放器皮肤
-         isSupportHLS:
-         true-hls播放
-         false-rtmp播放
-         width:视频宽度
-         height:视频高度
-         mode:
-         PlayerConstants.DISPLAY_SCALE 按比例拉伸
-         PlayerConstants.DISPLAY_CENTER 传入的款到居中显示
+         * hasSkin:rue:使用SDK播放器皮肤 false:不使用SDK播放器皮肤
+         * sSupportHLS:true-hls播放 false-rtmp播放
+         * width:视频宽度
+         * height:视频高度
+         * mode:PlayerConstants.DISPLAY_SCALE 按比例拉伸 PlayerConstants.DISPLAY_CENTER 传入的款到居中显示
          */
 
         //TODO:1.创建活动播放器
@@ -125,10 +128,6 @@ public class MutlLiveActivity extends Activity {
 
         measureView();
 
-//		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(AppInfo.screenWidthForPortrait,AppInfo.screenHeightForPortrait);
-//		params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);//水平居中
-//		mplayview.setLayoutParams(params);
-
 
         this.mPlayerLayoutView.addView(mVideoWindow);
 
@@ -137,15 +136,67 @@ public class MutlLiveActivity extends Activity {
         mPlayerView.playAction(Defualt_ActivityID);
 //		mPlayerView.changeOrientation(Configuration.ORIENTATION_LANDSCAPE);
         mPlayerView.setPlayerStateCallback(new PlayerStateCallback() {
-            //  state：播放器回调状态 如下
-//				PLAYER_VIDEO_PLAY ：视频开始播放事件
-//				PLAYER_VIDEO_STOP：视频停止播放事件
-//				PLAYER_ERROR：视频播放出错
+
             @Override
             public void onStateChange(int state, Object... extra) {
-                if (state == PlayerStateCallback.PLAYER_VIDEO_PLAY) {
-//					mPlayerView.setVisiableActiveSubLiveView(true);
-                    Toast.makeText(MutlLiveActivity.this, "开始", Toast.LENGTH_SHORT).show();
+
+                //TODO:state：播放器回调状态 如下
+                switch (state){
+
+                    case PlayerStateCallback.PLAYER_IDLE:
+
+                        break;
+
+                    case PlayerStateCallback.PLAYER_INIT:
+
+                        break;
+
+
+                    //TODO:视频开始播放事件
+                    case PlayerStateCallback.PLAYER_VIDEO_PLAY:
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+//                                mPlayerView.setVisiableActiveSubLiveView(true);
+                                mProgressbar.setVisibility(View.GONE);
+                            }
+                        });
+
+                        break;
+
+
+                    case PlayerStateCallback.PLAYER_SEEK_FINISH:
+
+                        break;
+
+                    case PlayerStateCallback.PLAYER_VIDEO_COMPLETE:
+
+                        break;
+
+                    //TODO:视频停止播放事件
+                    case PlayerStateCallback.PLAYER_STOP:
+                        Toast.makeText(MutlLiveActivity.this, "停止播放", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                    case PlayerStateCallback.PLAYER_VIDEO_RESUME:
+
+                        break;
+
+                    case PlayerStateCallback.PLAYER_BUFFERING_START:
+
+                        break;
+
+                    case PlayerStateCallback.PLAYER_BUFFERING_END:
+
+                        break;
+
+                    //TODO:视频播放出错
+                    case PlayerStateCallback.PLAYER_ERROR:
+                        Toast.makeText(MutlLiveActivity.this, "播放出错", Toast.LENGTH_SHORT).show();
+                        break;
+
                 }
             }
         });
