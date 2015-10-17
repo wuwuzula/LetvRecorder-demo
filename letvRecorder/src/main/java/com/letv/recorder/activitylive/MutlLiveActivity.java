@@ -49,9 +49,9 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
     private boolean isHLS;
     private boolean isBackgroud = false;
 
-    RelativeLayout mVideoWindow;
+    private RelativeLayout mVideoWindow;
 
-    ProgressBar mProgressbar;
+    private ProgressBar mProgressbar;
 
     private ImageView mLikeImageView;
 
@@ -124,7 +124,7 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
         //TODO:2:获取播放器视图
         mVideoWindow = (RelativeLayout) mPlayerView.getPlayerView();
 
-        measureView();
+       // measureView();
 
         mPlayerLayoutView.addView(mVideoWindow);
 
@@ -157,6 +157,7 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
                             public void run() {
 //                              mPlayerView.setVisiableActiveSubLiveView(true);
                                 mProgressbar.setVisibility(View.GONE);
+                                mLikeImageView.setVisibility(View.VISIBLE);
                             }
                         });
 

@@ -25,6 +25,9 @@
     <com.letv.recorder.view.HeartLayout
         android:id="@+id/heart_live_video_player_layout"
         android:layout_width="100dp"
+        android:layout_marginBottom="130dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="left"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true" />
 
@@ -36,6 +39,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="70dp"
         android:padding="25dp"
+        android:visibility="gone"
         android:scaleType="centerCrop"
         android:src="@drawable/img_favorite_large" />
 

@@ -97,6 +97,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		/**
 		 * 一定要初始化该参数
 		 */
+		Logger.d("request()");
 		LetvPublisher.init(activityID, userId, secretKey);
 
 		RecorderRequest recorderRequest = new RecorderRequest();
@@ -104,6 +105,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		recorderRequest.searchActivityByUserIDRequest(userId, new RequestCallback() {
 			@Override
 			public void onSucess(final Object object) {
+
+				Logger.d("onSucess");
 				saveSp();
 
 				runOnUiThread(new Runnable() {
@@ -111,9 +114,9 @@ public class MainActivity extends Activity implements OnClickListener {
 					public void run() {
 						List<SearchActivityInfo> searchActivityInfos = (List<SearchActivityInfo>) object;
 						Logger.d("请求成功 searchActivityByUserIDRequest");
-//						for (int i=0;i<searchActivityInfos.size();i++){
-//							Logger.d(i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
-//						}
+						for (int i=0;i<searchActivityInfos.size();i++){
+							Logger.d(i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
+						}
 						liveAdapter.setFlowInfos((List<SearchActivityInfo>) object);
 						liveListView.setAdapter(liveAdapter);
 						liveListView.setOnItemClickListener(liveAdapter);
@@ -125,6 +128,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			public void onFailed(final int statusCode, final String errorMsg) {
 				runOnUiThread(new Runnable() {
 					public void run() {
+						Logger.d("onFailed");
 						Logger.d("request onFailed " + "statusCode:" + statusCode + " errorMsg:" + errorMsg.toString());
 						Toast.makeText(MainActivity.this, "错误代码：" + statusCode + "," + errorMsg, Toast.LENGTH_SHORT).show();
 					}
@@ -161,6 +165,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				activityID = etActivityId.getText().toString().trim();
 				secretKey = etSecretKey.getText().toString().trim();
 
+				Logger.d(" 确定");
 				request();
 			}
 		});
@@ -255,56 +260,4 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onDestroy();
 		LeCloud.destory();
 	}
-
-	/**
-	 *
-	 private Random mRandom = new Random();
-	 private Timer mTimer = new Timer();
-	 private HeartLayout mHeartLayout;
-
-	 @Override
-	 protected void onCreate(Bundle savedInstanceState) {
-	 super.onCreate(savedInstanceState);
-	 setContentView(R.layout.activity_main);
-
-	 mHeartLayout = (HeartLayout) findViewById(R.id.heart_layout);
-	 //        mTimer.scheduleAtFixedRate(new TimerTask() {
-	 //            @Override
-	 //            public void run() {
-	 //                mHeartLayout.post(new Runnable() {
-	 //                    @Override
-	 //                    public void run() {
-	 //                        mHeartLayout.addHeart(randomColor());
-	 //                    }
-	 //                });
-	 //            }
-	 //        }, 500, 200);
-
-
-
-	 findViewById(R.id.btn_like).setOnClickListener(new View.OnClickListener() {
-	 @Override
-	 public void onClick(View v) {
-	 mHeartLayout.addHeart(randomColor());
-	 }
-	 });
-	 }
-
-	 @Override
-	 protected void onDestroy() {
-	 super.onDestroy();
-	 mTimer.cancel();
-	 }
-
-	 private int randomColor() {
-	 return Color.rgb(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255));
-	 }
-	 }
-	 */
-	private Random mRandom = new Random();
-	private HeartLayout mHeartLayout;
-	private int randomColor() {
-		return Color.rgb(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255));
-	}
-
 }

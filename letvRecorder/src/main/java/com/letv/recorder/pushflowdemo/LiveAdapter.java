@@ -103,16 +103,16 @@ public class LiveAdapter extends BaseAdapter implements OnItemClickListener{
 	public void setFlowInfos(List<SearchActivityInfo> infos) {
 		if(infos == null) return;
 		this.flowInfos.clear();
-//		for (SearchActivityInfo info : infos) {
-//				this.flowInfos.add(info);
-//				notifyDataSetChanged();
-//		}
 		for (SearchActivityInfo info : infos) {
-			if (info.activityStatus == status) {
 				this.flowInfos.add(info);
 				notifyDataSetChanged();
-			}
 		}
+//		for (SearchActivityInfo info : infos) {
+//			if (info.activityStatus == status) {
+//				this.flowInfos.add(info);
+//				notifyDataSetChanged();
+//			}
+//		}
 	}
 
 	@Override
