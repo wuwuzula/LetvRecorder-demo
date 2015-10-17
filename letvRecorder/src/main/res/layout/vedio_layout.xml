@@ -12,13 +12,31 @@
     </RelativeLayout>
 
 
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
 
-        <ProgressBar
-            android:layout_centerInParent="true"
-            android:id="@+id/pb_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
+
+
+    <com.letv.recorder.view.HeartLayout
+        android:id="@+id/heart_live_video_player_layout"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/iv_like"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="70dp"
+        android:padding="25dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_favorite_large" />
 
 </RelativeLayout>

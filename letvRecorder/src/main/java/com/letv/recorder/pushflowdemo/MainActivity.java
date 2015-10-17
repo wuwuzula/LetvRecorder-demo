@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -27,9 +28,11 @@ import com.letv.recorder.bean.SearchActivityInfo;
 import com.letv.recorder.callback.RequestCallback;
 import com.letv.recorder.controller.LetvPublisher;
 import com.letv.recorder.request.RecorderRequest;
+import com.letv.recorder.view.HeartLayout;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -252,4 +255,56 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onDestroy();
 		LeCloud.destory();
 	}
+
+	/**
+	 *
+	 private Random mRandom = new Random();
+	 private Timer mTimer = new Timer();
+	 private HeartLayout mHeartLayout;
+
+	 @Override
+	 protected void onCreate(Bundle savedInstanceState) {
+	 super.onCreate(savedInstanceState);
+	 setContentView(R.layout.activity_main);
+
+	 mHeartLayout = (HeartLayout) findViewById(R.id.heart_layout);
+	 //        mTimer.scheduleAtFixedRate(new TimerTask() {
+	 //            @Override
+	 //            public void run() {
+	 //                mHeartLayout.post(new Runnable() {
+	 //                    @Override
+	 //                    public void run() {
+	 //                        mHeartLayout.addHeart(randomColor());
+	 //                    }
+	 //                });
+	 //            }
+	 //        }, 500, 200);
+
+
+
+	 findViewById(R.id.btn_like).setOnClickListener(new View.OnClickListener() {
+	 @Override
+	 public void onClick(View v) {
+	 mHeartLayout.addHeart(randomColor());
+	 }
+	 });
+	 }
+
+	 @Override
+	 protected void onDestroy() {
+	 super.onDestroy();
+	 mTimer.cancel();
+	 }
+
+	 private int randomColor() {
+	 return Color.rgb(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255));
+	 }
+	 }
+	 */
+	private Random mRandom = new Random();
+	private HeartLayout mHeartLayout;
+	private int randomColor() {
+		return Color.rgb(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255));
+	}
+
 }

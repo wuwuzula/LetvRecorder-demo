@@ -2,11 +2,13 @@ package com.letv.recorder.activitylive;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -18,7 +20,10 @@ import com.lecloud.skin.actionlive.MultLivePlayCenter;
 import com.letv.recorder.Constant;
 import com.letv.recorder.R;
 import com.letv.recorder.utils.AppInfo;
+import com.letv.recorder.view.HeartLayout;
 import com.orhanobut.logger.Logger;
+
+import java.util.Random;
 
 
 /**
@@ -48,6 +53,11 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
     ProgressBar mProgressbar;
 
+    private ImageView mLikeImageView;
+
+
+    private Random mRandom = new Random();
+    private HeartLayout mHeartLayout;
 
     @Override
     protected void onResume() {
@@ -90,13 +100,6 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
         initData();
         initView();
         bindListener();
-
-
-
-
-
-
-
 
         /**
          *
@@ -199,6 +202,7 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
     private void bindListener() {
         mPlayerLayoutView.setOnClickListener(this);
+        mLikeImageView.setOnClickListener(this);
     }
 
     private void initData() {
@@ -221,6 +225,9 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
         Logger.d("MutlLiveActivity onCreate");
         mProgressbar = (ProgressBar) findViewById(R.id.pb_loading);
         mPlayerLayoutView = (RelativeLayout) this.findViewById(R.id.rl_live_video_player_parent_layout);
+        mLikeImageView = (ImageView) findViewById(R.id.iv_like);
+
+        mHeartLayout = (HeartLayout) findViewById(R.id.heart_live_video_player_layout);
 
     }
     @Override
@@ -278,8 +285,19 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
             //TODO：播放器的整个容器
             case R.id.rl_live_video_player_parent_layout:
-                Toast.makeText(MutlLiveActivity.this, "+1", Toast.LENGTH_SHORT).show();
+                mHeartLayout.addHeart(randomColor());
                 break;
+
+            case R.id.iv_like:
+                mHeartLayout.addHeart(randomColor());
+                break;
+
+
         }
+    }
+
+
+    private int randomColor() {
+        return Color.rgb(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255));
     }
 }
