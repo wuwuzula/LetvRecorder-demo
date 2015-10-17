@@ -24,8 +24,10 @@ import com.orhanobut.logger.Logger;
 /**
  * 视频播放界面
  */
-public class MutlLiveActivity extends Activity {
+public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
+
+    private static final String TAG = "malin";
 
     /**
      * 说明：
@@ -36,7 +38,6 @@ public class MutlLiveActivity extends Activity {
 
     private MultLivePlayCenter mPlayerView;
     // private LivePlayCenter mPlayerView1;
-    // private LivePlayCenter mPlayerView2;
 
 
     private static String Defualt_ActivityID = Constant.activityID;// "201412083000001";
@@ -62,7 +63,6 @@ public class MutlLiveActivity extends Activity {
                 }
 //				this.mPlayerView.resumeVideo();
             }
-            //
         }
     }
 
@@ -84,21 +84,19 @@ public class MutlLiveActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
-
-        Logger.init("malin");
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.vedio_layout);
-        AppInfo.initApp();
-        AppInfo.initScreenInfo(this);
-        Logger.d("MutlLiveActivity onCreate");
+
+        initData();
+        initView();
+        bindListener();
 
 
-        mProgressbar = (ProgressBar) findViewById(R.id.pb_loading);
-        Intent intent = getIntent();
-        Defualt_ActivityID = intent.getStringExtra("activityID");
-        isHLS = intent.getBooleanExtra("isHLS", false);
 
-        this.mPlayerLayoutView = (RelativeLayout) this.findViewById(R.id.layout_player);
+
+
+
+
 
         /**
          *
@@ -123,13 +121,9 @@ public class MutlLiveActivity extends Activity {
         //TODO:2:获取播放器视图
         mVideoWindow = (RelativeLayout) mPlayerView.getPlayerView();
 
-
-//		Logger.d("" + AppInfo.screenWidthForPortrait + " " + AppInfo.screenHeightForPortrait);
-
         measureView();
 
-
-        this.mPlayerLayoutView.addView(mVideoWindow);
+        mPlayerLayoutView.addView(mVideoWindow);
 
 
         //TODO:启动活动直播
@@ -158,7 +152,7 @@ public class MutlLiveActivity extends Activity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                                mPlayerView.setVisiableActiveSubLiveView(true);
+//                              mPlayerView.setVisiableActiveSubLiveView(true);
                                 mProgressbar.setVisibility(View.GONE);
                             }
                         });
@@ -203,13 +197,38 @@ public class MutlLiveActivity extends Activity {
 
     }
 
+    private void bindListener() {
+        mPlayerLayoutView.setOnClickListener(this);
+    }
 
+    private void initData() {
+
+        //TODO:init Logger
+        Logger.init(TAG);
+
+        //TODO:init AppInfo
+        AppInfo.initApp().initScreenInfo(this);
+
+
+        //TODO:getIntent
+        Intent intent = getIntent();
+        Defualt_ActivityID = intent.getStringExtra("activityID");
+        isHLS = intent.getBooleanExtra("isHLS", false);
+    }
+
+
+    private void initView(){
+        Logger.d("MutlLiveActivity onCreate");
+        mProgressbar = (ProgressBar) findViewById(R.id.pb_loading);
+        mPlayerLayoutView = (RelativeLayout) this.findViewById(R.id.rl_live_video_player_parent_layout);
+
+    }
     @Override
     protected void onDestroy() {
         //TODO:销毁直播播放器
-        this.mPlayerView.destroyVideo();
+        mPlayerView.destroyVideo();
         // this.mPlayerView1.destroyVideo();
-        this.mPlayerLayoutView.removeAllViews();
+        mPlayerLayoutView.removeAllViews();
         super.onDestroy();
         isBackgroud = false;
         LogUtils.clearLog();
@@ -217,19 +236,23 @@ public class MutlLiveActivity extends Activity {
     }
 
 
+    /**
+     * 测量播放器的View大小
+     */
     private void measureView() {
         ViewTreeObserver mViewTreeObserver = mVideoWindow.getViewTreeObserver();
-//		mViewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-//			@Override
-//			public boolean onPreDraw() {
-//				mplayview.getViewTreeObserver().removeOnPreDrawListener(this);
-//				Logger.d("mplayview.getWidth():" + mplayview.getWidth());
-//				Logger.d("mplayview.getHeight():" + mplayview.getHeight());
-//				return true;
-//			}
-//
-//
-//		});
+
+		mViewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+			@Override
+			public boolean onPreDraw() {
+                mVideoWindow.getViewTreeObserver().removeOnPreDrawListener(this);
+				Logger.d("mplayview.getWidth():" + mVideoWindow.getWidth());
+				Logger.d("mplayview.getHeight():" + mVideoWindow.getHeight());
+				return true;
+			}
+
+
+		});
 
         mViewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
@@ -249,4 +272,14 @@ public class MutlLiveActivity extends Activity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            //TODO：播放器的整个容器
+            case R.id.rl_live_video_player_parent_layout:
+                Toast.makeText(MutlLiveActivity.this, "+1", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

@@ -5,7 +5,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/layout_player"
+        android:id="@+id/rl_live_video_player_parent_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
