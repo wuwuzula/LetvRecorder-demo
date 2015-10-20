@@ -1,61 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
-
-
-    <RelativeLayout
-        android:id="@+id/rl_live_video_player_parent_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
-
-    </RelativeLayout>
-
-
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center" />
-
-
-    <com.letv.recorder.view.HeartLayout
-        android:id="@+id/heart_live_video_player_layout"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="130dp"
-        android:background="@android:color/transparent"
-        android:gravity="center_horizontal" />
-
-
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="80dp"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:id="@+id/iv_like"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/img_favorite_large"
-            android:visibility="gone" />
-
-    </RelativeLayout>
-
+    android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/fl_live_hostname_info_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -76,8 +25,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
-                android:text="樱桃小丸子"
-                android:textColor="@android:color/white" />
+                android:text="樱桃小丸子" />
 
 
             <TextView
@@ -87,8 +35,7 @@
                 android:layout_below="@+id/tv_live_zhubo_name"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:text="80"
-                android:textColor="@android:color/white" />
+                android:text="80" />
 
 
             <TextView
@@ -99,8 +46,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/tv_live_fan_number"
-                android:text="粉丝"
-                android:textColor="@android:color/white" />
+                android:text="粉丝" />
 
 
             <TextView
@@ -111,8 +57,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/tv_fan_string"
-                android:text="|"
-                android:textColor="@android:color/white" />
+                android:text="|" />
 
 
             <TextView
@@ -123,8 +68,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/tv_line_string"
-                android:text="10亿"
-                android:textColor="@android:color/white" />
+                android:text="100000" />
 
 
             <TextView
@@ -134,8 +78,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/tv_live_likes_number"
-                android:text="赞"
-                android:textColor="@android:color/white" />
+                android:text="赞" />
 
 
         </RelativeLayout>
@@ -150,8 +93,7 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="关注"
-            android:textColor="@android:color/white" />
+            android:text="关注" />
 
 
         <View
@@ -201,12 +143,11 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/xiaowanzi"
+            android:background="@drawable/headimageview"
             android:scaleType="centerCrop" />
 
 
         <RelativeLayout
-            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top">
@@ -218,8 +159,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/camera_close_btn"
-                android:paddingRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:background="@drawable/camera_close_btn" />
 
 
             <TextView
@@ -230,14 +171,13 @@
                 android:layout_toLeftOf="@+id/iv_live_close"
                 android:background="@drawable/left_while_borde_rounded"
                 android:gravity="center"
+                android:paddingTop="3dp"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:paddingTop="3dp"
                 android:text="举报"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
 
     </FrameLayout>
-
-</FrameLayout>
+</LinearLayout>
