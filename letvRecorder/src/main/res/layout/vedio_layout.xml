@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_gravity="bottom|right"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="180dp"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal" />
 
@@ -39,7 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_gravity="bottom|right"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="130dp"
         android:gravity="center_horizontal">
 
         <ImageView
@@ -55,6 +55,7 @@
 
 
     <FrameLayout
+        android:visibility="gone"
         android:id="@+id/fl_live_hostname_info_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -262,8 +263,10 @@
             android:src="@android:color/transparent" />
 
         <com.letv.recorder.view.HorizontalListView
+            android:id="@+id/lv_user_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp" />
 
     </LinearLayout>

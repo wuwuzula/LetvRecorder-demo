@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -19,8 +20,11 @@ import com.lecloud.skin.PlayerStateCallback;
 import com.lecloud.skin.actionlive.MultLivePlayCenter;
 import com.letv.recorder.Constant;
 import com.letv.recorder.R;
+import com.letv.recorder.adapter.WatcherAdapter;
+import com.letv.recorder.data.WatcherDataFactory;
 import com.letv.recorder.utils.AppInfo;
 import com.letv.recorder.view.HeartLayout;
+import com.letv.recorder.view.HorizontalListView;
 import com.orhanobut.logger.Logger;
 
 import java.util.Random;
@@ -58,7 +62,8 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
     private Random mRandom = new Random();
     private HeartLayout mHeartLayout;
-
+    private HorizontalListView lv_user_list;
+    private FrameLayout fl_live_hostname_info_layout;
     @Override
     protected void onResume() {
         super.onResume();
@@ -158,6 +163,10 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 //                              mPlayerView.setVisiableActiveSubLiveView(true);
                                 mProgressbar.setVisibility(View.GONE);
                                 mLikeImageView.setVisibility(View.VISIBLE);
+
+                                fl_live_hostname_info_layout.setVisibility(View.VISIBLE);
+                                lv_user_list.setAdapter(new WatcherAdapter(MutlLiveActivity.this, WatcherDataFactory.createData()));
+
                             }
                         });
 
@@ -229,7 +238,8 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
         mLikeImageView = (ImageView) findViewById(R.id.iv_like);
 
         mHeartLayout = (HeartLayout) findViewById(R.id.heart_live_video_player_layout);
-
+        lv_user_list = (HorizontalListView) findViewById(R.id.lv_user_list);
+        fl_live_hostname_info_layout = (FrameLayout) findViewById(R.id.fl_live_hostname_info_layout);
     }
     @Override
     protected void onDestroy() {
