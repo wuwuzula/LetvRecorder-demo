@@ -1,8 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:layout_height="match_parent">
 
 
     <RelativeLayout
@@ -200,19 +199,19 @@
         <!--round:corner_radius="90dp" />-->
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/iv_live_zhubo_headimage"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/headimageview"
             android:scaleType="centerCrop"
-            app:riv_oval="true"/>
+            android:src="@drawable/headimageview"
+            app:riv_oval="true" />
 
 
         <RelativeLayout
-            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|top">
+            android:layout_gravity="right|top"
+            android:layout_marginRight="10dp">
 
             <ImageView
                 android:id="@+id/iv_live_close"
@@ -242,5 +241,32 @@
         </RelativeLayout>
 
     </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="60dp"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_marginLeft="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"
+            app:riv_border_width="1dip"
+            app:riv_border_color="@android:color/white"
+            android:src="@android:color/transparent" />
+
+        <com.letv.recorder.view.HorizontalListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+
 
 </FrameLayout>

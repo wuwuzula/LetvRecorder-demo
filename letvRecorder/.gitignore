@@ -39,6 +39,4 @@ proguard/
 /build.gradle
 /gradle/wrapper/gradle-wrapper.properties
 
-/home/malin/malin_github/LetvRecorder/letvRecorder/src/main/java/com/letv/recorder
-/letvRecorder/src/main/java/com/letv/recorder/Constant.java
 /src/main/java/com/letv/recorder/Constant.java

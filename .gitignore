@@ -38,4 +38,3 @@ proguard/
 .settings.gradle
 /build.gradle
 /gradle/wrapper/gradle-wrapper.properties
-/letvRecorder/src/main/java/com/letv/recorder
