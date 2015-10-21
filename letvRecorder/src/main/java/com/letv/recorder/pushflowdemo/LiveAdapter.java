@@ -1,8 +1,5 @@
 package com.letv.recorder.pushflowdemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -12,13 +9,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
 import com.letv.recorder.R;
 import com.letv.recorder.activitylive.MutlLiveActivity;
 import com.letv.recorder.bean.SearchActivityInfo;
-import com.letv.recorder.net.LruImageCache;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LiveAdapter extends BaseAdapter implements OnItemClickListener{
 	private static final int status = 1;
@@ -61,13 +61,13 @@ public class LiveAdapter extends BaseAdapter implements OnItemClickListener{
 
 	class ViewHolder {
 		private SearchActivityInfo info;
-		public NetworkImageView netWorkImageView;
+		public ImageView netWorkImageView;
 		public TextView liveTitle;
 		public TextView liveType;
 		public TextView liveCount;
 
 		public ViewHolder(View view) {
-			this.netWorkImageView = (NetworkImageView) view.findViewById(R.id.item_img);
+			this.netWorkImageView = (ImageView) view.findViewById(R.id.item_img);
 			this.liveTitle = (TextView) view.findViewById(R.id.item_live_title);
 			this.liveType = (TextView) view.findViewById(R.id.item_live_angle);
 			this.liveCount = (TextView) view.findViewById(R.id.item_live_count);
@@ -75,9 +75,11 @@ public class LiveAdapter extends BaseAdapter implements OnItemClickListener{
 
 		public void updateUI(View view, int position) {
 			info = flowInfos.get(position);
-			netWorkImageView.setDefaultImageResId(R.drawable.default_img_16_10);
-			netWorkImageView.setErrorImageResId(R.drawable.default_img_16_10);
-			netWorkImageView.setImageUrl(info.coverImgUrl, LruImageCache.getImageLoader(context));
+			Picasso.with(context)
+					.load(info.coverImgUrl)
+					.placeholder(R.drawable.default_img_16_10)
+					.error(R.drawable.default_img_16_10)
+					.into(netWorkImageView);
 			liveTitle.setText(info.activityName == null ? "" : info.activityName);
 			
 			if (info.activityStatus == status) {

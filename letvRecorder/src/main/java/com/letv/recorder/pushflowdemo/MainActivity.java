@@ -8,9 +8,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,15 +28,13 @@ import com.letv.recorder.bean.SearchActivityInfo;
 import com.letv.recorder.callback.RequestCallback;
 import com.letv.recorder.controller.LetvPublisher;
 import com.letv.recorder.request.RecorderRequest;
-import com.letv.recorder.view.HeartLayout;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends Activity implements OnClickListener {
 
 
+	private static final String TAG = "MainActivity";
 	private static String activityID = "";
 	protected static String userId = "";
 	protected static String secretKey = "";
@@ -64,7 +62,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Logger.init("malin");
 		readSp();
 		context = this;
 		LeCloud.init(getApplicationContext());
@@ -97,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		/**
 		 * 一定要初始化该参数
 		 */
-		Logger.d("request()");
+		Log.d(TAG,"request()");
 		LetvPublisher.init(activityID, userId, secretKey);
 
 		RecorderRequest recorderRequest = new RecorderRequest();
@@ -106,16 +103,16 @@ public class MainActivity extends Activity implements OnClickListener {
 			@Override
 			public void onSucess(final Object object) {
 
-				Logger.d("onSucess");
+				Log.d(TAG,"onSucess");
 				saveSp();
 
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						List<SearchActivityInfo> searchActivityInfos = (List<SearchActivityInfo>) object;
-						Logger.d("请求成功 searchActivityByUserIDRequest");
+						Log.d(TAG,"请求成功 searchActivityByUserIDRequest");
 						for (int i=0;i<searchActivityInfos.size();i++){
-							Logger.d(i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
+							Log.d(TAG,i+":" + "activityName:"+searchActivityInfos.get(i).activityName+ " activityStatus:"+searchActivityInfos.get(i).activityStatus);
 						}
 						liveAdapter.setFlowInfos((List<SearchActivityInfo>) object);
 						liveListView.setAdapter(liveAdapter);
@@ -128,8 +125,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			public void onFailed(final int statusCode, final String errorMsg) {
 				runOnUiThread(new Runnable() {
 					public void run() {
-						Logger.d("onFailed");
-						Logger.d("request onFailed " + "statusCode:" + statusCode + " errorMsg:" + errorMsg.toString());
+						Log.d(TAG,"onFailed");
+						Log.d(TAG,"request onFailed " + "statusCode:" + statusCode + " errorMsg:" + errorMsg.toString());
 						Toast.makeText(MainActivity.this, "错误代码：" + statusCode + "," + errorMsg, Toast.LENGTH_SHORT).show();
 					}
 				});
@@ -165,7 +162,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				activityID = etActivityId.getText().toString().trim();
 				secretKey = etSecretKey.getText().toString().trim();
 
-				Logger.d(" 确定");
+				Log.d(TAG," 确定");
 				request();
 			}
 		});

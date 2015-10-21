@@ -24,16 +24,12 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     compile project(':leCloudSDK_Release')
-    compile 'com.google.code.gson:gson:2.1'
     compile 'com.android.support:appcompat-v7:19.1.0'
     compile files('libs/LetvRecorder_2015_08_13_17_v0.1.jar')
-    compile files('libs/volley.jar')
-    compile 'com.github.orhanobut:logger:1.12'
     compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
 }

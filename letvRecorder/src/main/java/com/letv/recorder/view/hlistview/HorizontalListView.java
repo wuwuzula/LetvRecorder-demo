@@ -24,7 +24,7 @@
  * It has been substantially rewritten and added to from the original version.
  */
 // @formatter:on
-package com.letv.recorder.view;
+package com.letv.recorder.view.hlistview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

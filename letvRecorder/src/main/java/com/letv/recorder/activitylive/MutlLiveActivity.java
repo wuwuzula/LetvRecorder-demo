@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -23,9 +24,8 @@ import com.letv.recorder.R;
 import com.letv.recorder.adapter.WatcherAdapter;
 import com.letv.recorder.data.WatcherDataFactory;
 import com.letv.recorder.utils.AppInfo;
-import com.letv.recorder.view.HeartLayout;
-import com.letv.recorder.view.HorizontalListView;
-import com.orhanobut.logger.Logger;
+import com.letv.recorder.view.heart.HeartLayout;
+import com.letv.recorder.view.hlistview.HorizontalListView;
 
 import java.util.Random;
 
@@ -72,7 +72,7 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
                 if (mPlayerView.getCurrentPlayState() == PlayerStateCallback.PLAYER_VIDEO_PAUSE) {
 //	        		this.mPlayerView.resumeVideo();
                 } else {
-                    Logger.e("LiveActivity", "已回收，重新请求播放");
+                    Log.e("LiveActivity", "已回收，重新请求播放");
 //	        		mPlayerView.playVideo(testEditText.getText() + "", "测试频道");
 //	        		mPlayerView.playAction(Defualt_ActivityID);
                 }
@@ -217,9 +217,6 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
     private void initData() {
 
-        //TODO:init Logger
-        Logger.init(TAG);
-
         //TODO:init AppInfo
         AppInfo.initApp().initScreenInfo(this);
 
@@ -232,7 +229,7 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
 
     private void initView(){
-        Logger.d("MutlLiveActivity onCreate");
+        Log.d(TAG,"MutlLiveActivity onCreate");
         mProgressbar = (ProgressBar) findViewById(R.id.pb_loading);
         mPlayerLayoutView = (RelativeLayout) this.findViewById(R.id.rl_live_video_player_parent_layout);
         mLikeImageView = (ImageView) findViewById(R.id.iv_like);
@@ -264,8 +261,9 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 			@Override
 			public boolean onPreDraw() {
                 mVideoWindow.getViewTreeObserver().removeOnPreDrawListener(this);
-				Logger.d("mplayview.getWidth():" + mVideoWindow.getWidth());
-				Logger.d("mplayview.getHeight():" + mVideoWindow.getHeight());
+				Log.d(TAG,"mplayview.getWidth():" + mVideoWindow.getWidth());
+				Log.d(TAG,"mplayview.getHeight():" + mVideoWindow.getHeight());
+
 				return true;
 			}
 
@@ -281,8 +279,8 @@ public class MutlLiveActivity extends Activity implements View.OnClickListener{
 
                 if (isFirst) {
                     isFirst = false;
-                    Logger.d("mplayview.getWidth():2:" + mVideoWindow.getWidth());
-                    Logger.d("mplayview.getHeight():2:" + mVideoWindow.getHeight());
+                    Log.d(TAG,"mplayview.getWidth():2:" + mVideoWindow.getWidth());
+                    Log.d(TAG,"mplayview.getHeight():2:" + mVideoWindow.getHeight());
                 }
             }
         });
